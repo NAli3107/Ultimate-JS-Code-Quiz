@@ -33,3 +33,32 @@ STEPS:
     - dont neeed else block because whether its right or wrong you need to render the question anyway
 
 only introduction page made on html - everything else made on JS
+
+- Quiz questions
+
+1) Inside which HTML element do we put the JavaScript?
+    a) <script>
+    b) <js>
+    c) <scripting>
+    d) <javascript>
+
+2) Where is the correct place to insert a JavaScript?
+    a) The <head> section
+    b) The <body> section
+    c) Both the <head> and the <body> section are correct.
+
+3) How do you create a function in JavaScript?
+    a) function = myFunction()
+    b) function myFunction()
+    c) function:myFunction()
+
+4) How does a WHILE loop start?
+    a) while (i <= 10)
+    b) while i = 1 to 10
+    c) while (i <= 10; i++)
+
+5) How do you round the number 7.25 to the nearest integer?
+    a) Math.round(7.25)
+    b) rnd(7.25)
+    c) Math.rnd(7.25)
+    d) round(7.25)
