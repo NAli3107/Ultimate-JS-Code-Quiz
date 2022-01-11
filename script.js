@@ -61,4 +61,4 @@ startButton.addEventListener("click", startQuiz);
     4) Function to render score
     5) register score in local storage 
     6) create and link high score html
-    7) render highscore
+    7) render highscore*/
