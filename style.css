@@ -55,8 +55,9 @@ p{
 #list-container{
     display: flex;
     flex-direction: column;
-    
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    list-style-type:none;
+    padding-right: 10%;
 }
 
 .answers-button{
