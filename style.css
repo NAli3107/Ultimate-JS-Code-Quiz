@@ -45,6 +45,39 @@ p{
     text-align: center;
     cursor: pointer;
 }
+#questions-container{
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#list-container{
+    display: flex;
+    flex-direction: column;
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.answers-button{
+    border: solid black;
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: 60;
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    background-color:rgb(8, 164, 175);
+    
+    
+}
+
+.answers-button:hover {
+    background-color: black;
+  }
+
 
 @media only screen and (max-width: 600px) {
     header {
