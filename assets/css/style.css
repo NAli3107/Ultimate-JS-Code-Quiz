@@ -72,13 +72,20 @@ p{
     cursor: pointer;
     background-color:rgb(8, 164, 175);
     
-    
 }
 
 .answers-button:hover {
     background-color: black;
   }
 
+#form{
+    display: none;
+    padding-bottom: 20%;
+}
+
+.main-container h1{
+    color: red;
+}
 
 @media only screen and (max-width: 600px) {
     header {

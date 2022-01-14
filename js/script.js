@@ -1,12 +1,14 @@
 // Variable in global memory
 let index = 0;
-const startButton = document.getElementById("start-button");
-const questionElement = document.getElementById("render-questions");
 let totalTime = 100;
 let timeCountdown;
-const timeElement = document.getElementById("timer");
-const showQuestions = document.createElement("h2");
 const highScore = 100;
+const startButton = document.getElementById("start-button");
+const questionElement = document.getElementById("render-questions");
+const finalScore = document.getElementById("final-score");
+const highScoreTrigger = document.getElementById("high-score");
+let timeElement = document.getElementById("timer");
+const showQuestions = document.createElement("h2");
 let listAnswerOptions = document.createElement("ul");
 let option1 = document.createElement("li");
 let option2 = document.createElement("li");
@@ -23,6 +25,7 @@ function removeIntroPage() {
     let removeIntro = document.getElementById("intro-page");
         removeIntro.remove();
 }
+
 //function to render questions
 function renderQuestions() {
     showQuestions.innerText = questionsArray[index].question;
@@ -51,14 +54,17 @@ function renderQuestions() {
         answer3.addEventListener("click", showResult);
         answer4.addEventListener("click", showResult);
     }
-    /* else displayScore*/
+    else {
+        displayScore();
+    }
 };
 
 
 
 function showResult() {
-    let correctAnswer = document.createElement("h2");
-    let wrongAnswer = document.createElement("h2");
+
+    let correctAnswer = document.createElement("h3");
+    let wrongAnswer = document.createElement("h3");
     correctAnswer.textContent = "Well done! That's correct!";
     wrongAnswer.textContent = "Sorry, that's incorrect!";
     
@@ -94,14 +100,20 @@ function showResult() {
 
 function startTimer() {
     timeCountdown = setTimeout(function() {
-        totalTime--;
+        totalTime --;
         timeElement.textContent = totalTime;
         if (totalTime <= 0) {
         displayScore();
         }
     }, 1000);    
     
-}
+} 
+
+function displayScore() {
+    finalScore.textContent = highScore;
+    clearInterval(timeCountdown);
+    form.style.display = "block";
+};
 
 
 // When the START button is clicked
@@ -111,7 +123,9 @@ function startQuiz() {
 
     // render questions
     renderQuestions();
-//call function to start timer here
+
+    //call function to start timer here
+    startTimer();
 
     return;
 }
@@ -174,3 +188,13 @@ answer4.setAttribute("class", "answers-button");
     5) register score in local storage 
     6) create and link high score html
     7) render highscore */
+
+/*Help:
+
+1) when start button clicked the timer starts but doesn't continue decrementing
+2) if wrong answer selected doesn't automatically switch to next question
+3) message for wrong answer appears at the top
+4) when i submit initials doesnt go to highscore page
+5) highscore page doesnt allow css style changes
+
+*/

@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ultimate JS Code Quiz!</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <header>
-        <div id="highscore">View Highscores</div>
+        <div id="high-score"><a href="high-score.html">View Highscores</a></div>
         <div id="timer">Time <span id="timer"></span></div>
     </header>
     <main>
@@ -27,14 +27,17 @@
             </div>
             <div>
                 <form id="form">
-                    <h1></h1>
-                    <p></p>
+                    <h1> All Done!</h1>
+                    <h3> Your final score is <span id="final-score"></span></h3>
+                    <label id="initial">Enter initials:</label>
+                    <input  type="text"   name="initial"    id="initialUser"   placeholder="NA" />   
+                    <button id="sign-up" type="submit">Submit</button>
                 </form>
             </div>
         </div>
     </main>
 
 
-    <script src="./script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
