@@ -1,42 +1,33 @@
 // Variable in global memory
-const index = 0;
+let index = 0;
 const startButton = document.getElementById("start-button");
 const questionElement = document.getElementById("render-questions");
+let totalTime = 100;
+let timeCountdown;
+const timeElement = document.getElementById("timer");
 const showQuestions = document.createElement("h2");
-showQuestions.setAttribute("id", "questions-container")
+const highScore = 100;
 let listAnswerOptions = document.createElement("ul");
-listAnswerOptions.setAttribute("id", "list-container")
 let option1 = document.createElement("li");
 let option2 = document.createElement("li");
 let option3 = document.createElement("li");
 let option4 = document.createElement("li");
-option1.setAttribute("class", "options-containers");
-option2.setAttribute("class", "options-containers");
-option3.setAttribute("class", "options-containers");
-option4.setAttribute("class", "options-containers");
 let answer1 = document.createElement("button");
 let answer2 = document.createElement("button");
 let answer3 = document.createElement("button");
 let answer4 = document.createElement("button");
-answer1.setAttribute("class", "answers-button");
-answer2.setAttribute("class", "answers-button");
-answer3.setAttribute("class", "answers-button");
-answer4.setAttribute("class", "answers-button");
+
 
 //function to remove the introductory page
-function removeIntroPage () {
+function removeIntroPage() {
     let removeIntro = document.getElementById("intro-page");
         removeIntro.remove();
 }
 //function to render questions
-function renderQuestions () {
+function renderQuestions() {
     showQuestions.innerText = questionsArray[index].question;
     if (questionsArray[index] !==4) {
-        
-        //questionElement.appendChild(questionsArray[index].question)
-        //question not loading
-        console.log(questionsArray[index].question);
-        
+                   
         answer1.textContent = questionsArray[index].options[0];
         answer2.textContent = questionsArray[index].options[1];
         answer3.textContent = questionsArray[index].options[2];
@@ -60,8 +51,74 @@ function renderQuestions () {
         answer3.addEventListener("click", showResult);
         answer4.addEventListener("click", showResult);
     }
-
+    /* else displayScore*/
 };
+
+
+
+function showResult() {
+    let correctAnswer = document.createElement("h2");
+    let wrongAnswer = document.createElement("h2");
+    correctAnswer.textContent = "Well done! That's correct!";
+    wrongAnswer.textContent = "Sorry, that's incorrect!";
+    
+    if (this.textContent === questionsArray[index].answer) {
+        questionElement.appendChild(correctAnswer);
+        setTimeout(function() {
+            questionElement.innerHTML = "";
+            index++;
+            if (index === questionsArray.length) {
+              displayScore();
+      
+            }
+            else {
+      
+              renderQuestions()
+            }
+          }, 1000)
+        
+    } 
+    else {
+        questionElement.appendChild(wrongAnswer)
+        
+        if (totalTime >= 10) {
+            totalTime = totalTime -10;
+        }
+        timeElement.textContent = totalTime;
+
+        /* add logic about removing 10 points from high score*/
+
+        renderQuestions()
+        }
+};
+
+function startTimer() {
+    timeCountdown = setTimeout(function() {
+        totalTime--;
+        timeElement.textContent = totalTime;
+        if (totalTime <= 0) {
+        displayScore();
+        }
+    }, 1000);    
+    
+}
+
+
+// When the START button is clicked
+function startQuiz() {
+    // calling function to remove the intro page
+    removeIntroPage();
+
+    // render questions
+    renderQuestions();
+//call function to start timer here
+
+    return;
+}
+
+// Event listener for START button to trigger the commencement of the quiz
+startButton.addEventListener("click", startQuiz);
+
 
 // Array object with quiz questions, options and answers
 let questionsArray = [
@@ -96,40 +153,18 @@ let questionsArray = [
     },
 ];
 
-function showResult() {
-    let correctAnswer = document.createElement("h2");
-    let wrongAnswer = document.createElement("h2");
-    correctAnswer.textContent = "Well done! That's correct!";
-    wrongAnswer.textContent = "Sorry, that's incorrect!";
-    
-    if (this.textContent === questionsArray[index].answer) {
-        questionElement.appendChild(correctAnswer);
-        
-    } else {
-        questionElement.appendChild(wrongAnswer)
-        /*the user selection the wrong answer      
-        subtract 10 for time
-        if (timecountdown >= 10) {
-        timecountdown = timecountdown - 10;
-      */
-        }
-}
+/* Setting attributes for createdElements */
+showQuestions.setAttribute("id", "questions-container")
+listAnswerOptions.setAttribute("id", "list-container")
+option1.setAttribute("class", "options-containers");
+option2.setAttribute("class", "options-containers");
+option3.setAttribute("class", "options-containers");
+option4.setAttribute("class", "options-containers");
+answer1.setAttribute("class", "answers-button");
+answer2.setAttribute("class", "answers-button");
+answer3.setAttribute("class", "answers-button");
+answer4.setAttribute("class", "answers-button");
 
-
-// When the START button is clicked
-function startQuiz() {
-    // calling function to remove the intro page
-    removeIntroPage();
-
-    // render questions
-    renderQuestions();
-//call function to start timer here
-
-    return;
-}
-
-// Event listener for START button to trigger the commencement of the quiz
-startButton.addEventListener("click", startQuiz);
 
 /*Next steps:
     1) Start the timer
