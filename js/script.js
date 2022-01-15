@@ -2,7 +2,7 @@
 let index = 0;
 let totalTime = 100;
 let timeCountdown;
-const highScore = 100;
+let highScore;
 const startButton = document.getElementById("start-button");
 const questionElement = document.getElementById("render-questions");
 const finalScore = document.getElementById("final-score");
@@ -29,8 +29,7 @@ function removeIntroPage() {
 //function to render questions
 function renderQuestions() {
     showQuestions.innerText = questionsArray[index].question;
-    if (questionsArray[index] !==4) {
-                   
+                       
         answer1.textContent = questionsArray[index].options[0];
         answer2.textContent = questionsArray[index].options[1];
         answer3.textContent = questionsArray[index].options[2];
@@ -53,10 +52,7 @@ function renderQuestions() {
         answer2.addEventListener("click", showResult);
         answer3.addEventListener("click", showResult);
         answer4.addEventListener("click", showResult);
-    }
-    else {
-        displayScore();
-    }
+    
 };
 
 
@@ -86,23 +82,31 @@ function showResult() {
     } 
     else {
         questionElement.appendChild(wrongAnswer)
+        setTimeout(function(){
+            index++;
+            if (totalTime >= 10) {
+                totalTime = totalTime -10;
+            }        
+            if(index === questionsArray.length) {
+                displayScore();
+            }
+            else {
+                renderQuestions()
+            }
         
-        if (totalTime >= 10) {
-            totalTime = totalTime -10;
-        }
-        timeElement.textContent = totalTime;
-
+            timeElement.textContent = totalTime;
+        }, 1000)
         /* add logic about removing 10 points from high score*/
-
-        renderQuestions()
+        
         }
 };
 
+/* function to decrement time by 1 second*/
 function startTimer() {
-    timeCountdown = setTimeout(function() {
+    timeCountdown = setInterval(function() {
         totalTime --;
         timeElement.textContent = totalTime;
-        if (totalTime <= 0) {
+        if (totalTime == 0) {
         displayScore();
         }
     }, 1000);    
@@ -110,6 +114,7 @@ function startTimer() {
 } 
 
 function displayScore() {
+    highScore = totalTime;
     finalScore.textContent = highScore;
     clearInterval(timeCountdown);
     form.style.display = "block";
@@ -132,6 +137,7 @@ function startQuiz() {
 
 // Event listener for START button to trigger the commencement of the quiz
 startButton.addEventListener("click", startQuiz);
+
 
 
 // Array object with quiz questions, options and answers
