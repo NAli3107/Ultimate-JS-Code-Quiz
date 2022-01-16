@@ -12,3 +12,15 @@ The user is then redirected to a page which informs them of their score and a fo
 
 What to Expect:
 
+<img width="450" alt="Screenshot1" src="https://user-images.githubusercontent.com/94486765/149660790-39669260-8a3d-4232-9b3a-fca488bf85d9.png">
+
+<img width="451" alt="Screenshot2" src="https://user-images.githubusercontent.com/94486765/149660792-d1c7fafe-d509-4428-bb10-55b3ef567603.png">
+
+<img width="451" alt="Screenshot3" src="https://user-images.githubusercontent.com/94486765/149660793-becc5639-291f-45b6-8778-22902f121c95.png">
+
+<img width="454" alt="Screenshot4" src="https://user-images.githubusercontent.com/94486765/149660794-d65c4b88-26b4-47c7-b4a4-1f07c2f13666.png">
+
+Link:
+https://github.com/NAli3107/Ultimate-JS-Code-Quiz
+
+https://nali3107.github.io/Ultimate-JS-Code-Quiz/
