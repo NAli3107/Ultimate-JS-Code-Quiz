@@ -7,7 +7,7 @@ let highestScore = 100;
 const startButton = document.getElementById("start-button");
 const questionElement = document.getElementById("render-questions");
 const finalScore = document.getElementById("final-score");
-const highScoreTrigger = document.getElementById("score-page");
+let highScoreTrigger = document.getElementById("score-page");
 let timeElement = document.getElementById("timer");
 const showQuestions = document.createElement("h2");
 let listAnswerOptions = document.createElement("ul");
@@ -220,6 +220,13 @@ function saveUserInformation(){
     }
 };
 
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    saveUserInformation();
+    window.location.href="high-score.html";
+    
+})
+
 function showHighScores() {
     let highestScore = JSON.parse(localStorage.getItem("Scores")) || [];
 
@@ -228,8 +235,8 @@ function showHighScores() {
         let scoresList= document.createElement("li");
         scoresList.textContent = score.initials + " - " + score.score;
         
-        let info = document.getElementById("ol-highscores");
-        info.appendChild(scoresList);
+        let userList = document.getElementById("ol-highscores");
+        userList.appendChild(scoresList);
         
       });
 }
@@ -246,10 +253,3 @@ showHighScores();
 
 highScoreTrigger.addEventListener("click", renderFinalScore);
 form.style.display = "none";
-
-submitButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    saveUserInformation();
-    window.location.href="high-score.html";
-    
-})
