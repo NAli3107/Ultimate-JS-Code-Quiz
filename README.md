@@ -1,64 +1,14 @@
 # Ultimate-JS-Code-Quiz
 
-Notes
+Overview:
 
+This web application is quiz that runs in the browser and features dynamically updated HTML and CSS powered by JavaScript code. It has a clean, polished, and responsive user interface.
 
-- Click on START button 
-    - start the timer - could be Eventlistener('click')
-    - render the first question on the page
+Functionality:
 
-- When user clicks an answer    
-    - check if the chosen answer is correct - could use if else statements with boolean
-        - if answer is wrong then time is subtracted from remaining time - could use (count-- syntax)
-        - if answer is correct then render next question
+When the user clicks the start button, a timer starts and the user is presented with the first question. When they answer this question, then they are presented with another question. However, if the user answers a question incorrectly then time is subtracted from the clock - specifically 10 seconds. Once all questions are answered or the timer reaches 0, then the game is over. 
 
-- Last question of end of time then display score
+The user is then redirected to a page which informs them of their score and a form where they can input their initials. After this, they can submit their their information and their initials plus their score will be saved in local storage. Once they select submit, they will be redirected to a high scores page that will render the latest high scores.
 
-STEPS:
+What to Expect:
 
-1) HTML file - index.HTML
-    - header - flex container
-    - inside header will be two divs (flex items use space between) - first div has anchor tags with
-    href link to show you high score link. second page will have timer - number needs to wrapped inside span (timer value that will change) give it #timer id
-    - div with h1, p tag and another div with a button
-    - button (required id #start-button) will need click event and a function to remove div (startQuiz)
-    - div needs id #start-container
-
-    - startQuiz functions needs to remove div, start timer and render question
-
-    - questions need to be stored as an object array
-    - questions need to be created in JS
-    - question needs to be a div (requires an id #question-container) - answers are buttons - will have click event and function (checkAnswer)
-    - only need if block to check answer and deduct time
-    - dont neeed else block because whether its right or wrong you need to render the question anyway
-
-only introduction page made on html - everything else made on JS
-
-- Quiz questions
-
-1) Inside which HTML element do we put the JavaScript?
-    a) <script>
-    b) <js>
-    c) <scripting>
-    d) <javascript>
-
-2) Where is the correct place to insert a JavaScript?
-    a) The <head> section
-    b) The <body> section
-    c) Both the <head> and the <body> section are correct.
-
-3) How do you create a function in JavaScript?
-    a) function = myFunction()
-    b) function myFunction()
-    c) function:myFunction()
-
-4) How does a WHILE loop start?
-    a) while (i <= 10)
-    b) while i = 1 to 10
-    c) while (i <= 10; i++)
-
-5) How do you round the number 7.25 to the nearest integer?
-    a) Math.round(7.25)
-    b) rnd(7.25)
-    c) Math.rnd(7.25)
-    d) round(7.25)

@@ -59,8 +59,8 @@ function renderQuestions() {
     
 };
 
-
-
+/*Function to show whether correct answer has been selected with else
+to decrement 10 secs with wrong answer is selected */
 function showResult() {
 
     let correctAnswer = document.createElement("h3");
@@ -101,7 +101,6 @@ function showResult() {
         
             timeElement.textContent = totalTime;
         }, 1000)
-        /* add logic about removing 10 points from high score*/
         
         }
 };
@@ -118,6 +117,7 @@ function startTimer() {
     
 } 
 
+/*Function to render final score and form once the quiz ends*/
 function displayScore() {
     highScore = totalTime;
     finalScore.textContent = highScore;
@@ -125,7 +125,7 @@ function displayScore() {
     form.style.display = "block";
 };
 
-
+/* Function to save user initials and scores in local storage*/
 function saveUserInformation(){
     let initialUser = document.querySelector("#initialUser").value;
     let userScore = highestScore;
@@ -135,7 +135,7 @@ function saveUserInformation(){
         alert("You must insert initials before proceeding!");
 
     } else {
-        
+
         scoresList = JSON.parse(localStorage.getItem("scores")) || [];
         let scores = {
         score: userScore,
