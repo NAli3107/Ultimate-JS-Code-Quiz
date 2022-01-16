@@ -7,7 +7,7 @@ let highestScore = 100;
 const startButton = document.getElementById("start-button");
 const questionElement = document.getElementById("render-questions");
 const finalScore = document.getElementById("final-score");
-const highScoreTrigger = document.getElementById("high-score");
+const highScoreTrigger = document.getElementById("score-page");
 let timeElement = document.getElementById("timer");
 const showQuestions = document.createElement("h2");
 let listAnswerOptions = document.createElement("ul");
@@ -21,7 +21,6 @@ let answer3 = document.createElement("button");
 let answer4 = document.createElement("button");
 let submitButton = document.querySelector("register-score");
 let form = document.getElementById("form");
-
 
 
 //function to remove the introductory page
@@ -125,34 +124,6 @@ function displayScore() {
     form.style.display = "block";
 };
 
-/* Function to save user initials and scores in local storage*/
-function saveUserInformation(){
-    let initialUser = document.querySelector("#initialUser").value;
-    let userScore = highestScore;
-
-    if (initialUser === "") {
-
-        alert("You must insert initials before proceeding!");
-
-    } else {
-
-        scoresList = JSON.parse(localStorage.getItem("scores")) || [];
-        let scores = {
-        score: userScore,
-        initials: initialUser
-        };
-
-        scoresList.push(scores);
-        localStorage.setItem("scores", JSON.stringify(scoresList));
-
-    }
-};
-
-let scoresList = [];
-function renderFinalScore(){
-    scoresList = JSON.parse(localStorage.getItem("scores"));
-};
-
 // When the START button is clicked
 function startQuiz() {
     // calling function to remove the intro page
@@ -219,14 +190,40 @@ answer4.setAttribute("class", "answers-button");
 
 /* high-score page code*/
 
+/* Functions to save user initials and scores in local storage*/
+
+let scoresList = [];
+function renderFinalScore(){
+    scoresList = JSON.parse(localStorage.getItem("Scores"));
+};
+
+
+function saveUserInformation(){
+    let initialUser = document.querySelector("#initialUser").value;
+    let userScore = highestScore;
+
+    if (initialUser === "") {
+
+        alert("You must insert initials before proceeding!");
+
+    } else {
+
+        scoresList = JSON.parse(localStorage.getItem("Scores")) || [];
+        let scores = {
+            score: userScore,
+            initials: initialUser
+        }
+
+        scoresList.push(scores);
+        localStorage.setItem("Scores", JSON.stringify(scoresList));
+
+    }
+};
+
 function showHighScores() {
-    let highestScore = JSON.parse(localStorage.getItem("scores")) || [];
+    let highestScore = JSON.parse(localStorage.getItem("Scores")) || [];
 
-    highestScore.sort(function(a, b) {
-        return b.score - a.score;
-      });
-
-      highestScore.forEach(function(score) {
+        highestScore.forEach(function(score) {
         
         let scoresList= document.createElement("li");
         scoresList.textContent = score.initials + " - " + score.score;
